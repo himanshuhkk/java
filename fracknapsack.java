@@ -10,7 +10,7 @@ this.value = value;
 this.weight = weight;
 }
 }
-class ItemComparator implements Comparator{
+class ItemComparator implements Comparator<Object>{
     
     public int compare(Item a, Item b) {
         double r1 = (double) (a.value) / (double) (a.weight);
@@ -22,6 +22,12 @@ class ItemComparator implements Comparator{
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public int compare(Object o1, Object o2) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }
 
