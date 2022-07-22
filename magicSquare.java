@@ -26,25 +26,81 @@ public class magicSquare {
         return arr;
 
     }
-    static void magicSqEven(int [][] arr , int n){
-        int  n1 = n/4;
-        int tl = 0 , tr = n-1 , bl = n-1 , br = n-1;
-        int i = 0;
-        while(i<n){
-            
+    static int [][] magicSqEven(int[][] arr , int n){
+        int s = n/4 , i , j=0;
+        int [] sbox = new int[s*2];
+        int [] mbox = new int[n-(s*2)];
+        int a = 0;
+        int b = n-1;
+        
+        for(i =0; i<s; i++){
+            sbox[j] = a;
+            a++;
+            j++;
+            sbox[j] = b;
+            j++;
+            b--;
         }
-    } 
+        j=0;
+        for(i=s;i<n-s;i++){
+            mbox[j] = i;
+            j++;
+        }
+        
+        int temp1 , temp2;
+        for(i=0; i<sbox.length; i++){
+            for(j=0; j<sbox.length; j++){
+                temp1 = sbox[i];
+                temp2 = sbox[j];
+                arr[temp1][temp2] = 1;
+            }
+        }
+        temp1 = 0 ;
+        temp2 = 0;
+        for(i=0; i<mbox.length; i++){
+            for(j=0; j<mbox.length; j++){
+                temp1 = mbox[i];
+                temp2 = mbox[j];
+                arr[temp1][temp2] = 1;
+            }
+        }
+        int number = 1;
+        int number2 = n*n;
+        for( i=0;i<n;i++){
+        for( j=0;j<n;j++){
+            if(arr[i][j]==1){
+                arr[i][j] = number;
+                number++;
+            }
+            else{
+                arr[i][j] = number2;
+                number2--;
+            }
+        }
+    }
+    return arr;
+    
+    }
+   
    public static void main(String[] args) {
     System.out.println("Enter length of magic box : ");
     Scanner sc = new Scanner(System.in);
     int n = sc.nextInt();
     int [][] mgs  = new int[n][n];
-    mgs = magicSqOdd(mgs , n);
+    if((n & 1) == 0){
+        mgs = magicSqEven(mgs, n);
+    }
+    else{
+        mgs = magicSqOdd(mgs , n);
+    }
+    
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
             System.out.print(" " + mgs[i][j]);
         }
         System.out.println();
     }
+  
+
    } 
 }
