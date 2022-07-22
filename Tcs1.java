@@ -12,7 +12,7 @@ public class Tcs1 {
             for(j=1;j<=i;j++){
                 int len = 0 ;
                 sum = sum + 6 + 16*(p-1);
-                len = Integer.toString(sum).length();
+                //len = Integer.toString(sum).length();
                 // if(len < 5){
                 //     while(5-len!=0){
                 //         System.out.print(0);
