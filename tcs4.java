@@ -18,12 +18,15 @@ public class tcs4 {
             for(int j=1;j<=month[i-1];j++){
                 Double p = Math.pow(6-i, 2) + Math.abs(j); 
                 sum = sum + (p*Math.min(a , b));
-                if(r - sum > 0){
-                    
+                if(r - sum < 0 ){
+                    return;
                 }
+
+                
 
             }
         }
+        System.out.println(sum);
 
 
 
